@@ -1,0 +1,2 @@
+exports.contact='<h1>New Enquiry</h1><p>Name : %s</p><p>Email : %s</p><p>Phone : %s</p><p>Message : %s</p>'
+exports.prayerRequest='<h1>New Prayer Request</h1><p>Name : %s</p><p>Email : %s</p><p>Phone : %s</p><p>Message : %s</p>'

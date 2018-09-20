@@ -1,0 +1,41 @@
+{
+  "name": "utilitygateway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shakspeare/utilitygateway.git"
+  },
+  "author": "Aruleesh Shakspeare",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shakspeare/utilitygateway/issues"
+  },
+  "homepage": "https://github.com/Shakspeare/utilitygateway#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.15",
+    "nodemailer": "^4.6.8",
+    "util": "^0.11.0"
+  },
+  "targets": [
+    {
+      "domain": "test",
+      "fmail": "shakspeare.a@gmail.com",
+      "password": "nov18am1985",
+      "tomail": "shakspeare.a@gmail.com"
+    },
+    {
+      "domain": "b",
+      "fmail": "bbb",
+      "password": "bbb",
+      "tomail": "bbb"
+    }
+  ]
+}
