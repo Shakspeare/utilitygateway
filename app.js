@@ -9,8 +9,6 @@ var pkg = require('./package.json');
 var template = require('./helper/template.js')
 
 var target = pkg.targets;
-
-
 app.use(cors())
 app.use(bodyParser.json())
 
