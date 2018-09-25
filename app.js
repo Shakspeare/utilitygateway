@@ -7,6 +7,7 @@ var util = require('util');
 
 var pkg = require('./package.json');
 var template = require('./helper/template.js')
+var constant =require('./helper/constant.js')
 
 var target = pkg.targets;
 app.use(cors())
@@ -15,6 +16,41 @@ app.use(bodyParser.json())
 
 app.get('/test', function (req, res) {
     res.send({ name: 'test', email: 'test@gmail.com', phone: '9791135458', subject: 'my first mail', message: 'hello word', domain: 'test' })
+});
+app.get('/api/event', function (req, res) {
+    var lst=constant.events;
+    var d=new Date();
+    
+    d.setDate(d.getDate()-90);
+    
+    var filtered = lst.filter(item=>{
+        var time = new Date(item.datetime).getTime();
+        return time>d.getTime()
+    });
+    res.send(filtered);
+});
+app.get('/api/event/upcoming', function (req, res) {
+    var lst=constant.events;
+    var d=new Date();
+    
+    
+    var filtered = lst.filter(item=>{
+        var time = new Date(item.datetime).getTime();
+        return time>d.getTime()
+    });
+    res.send(filtered);
+});
+app.get('/api/event/upcoming/next', function (req, res) {
+    var lst=constant.events;
+    var d=new Date();
+    
+    
+    var filtered = lst.filter(item=>{
+        var time = new Date(item.datetime).getTime();
+        return time>d.getTime()
+    });
+    
+    res.send(filtered[0]);
 });
 app.post('/mail/contact/send', function (req, res) {
     var fmail = '';
