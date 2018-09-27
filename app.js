@@ -4,6 +4,7 @@ var cors = require('cors')
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var util = require('util');
+var arraySort = require('array-sort');
 
 var pkg = require('./package.json');
 var template = require('./helper/template.js')
@@ -14,6 +15,8 @@ app.use(cors())
 app.use(bodyParser.json())
 
 
+  
+ 
 app.get('/test', function (req, res) {
     res.send({ name: 'test', email: 'test@gmail.com', phone: '9791135458', subject: 'my first mail', message: 'hello word', domain: 'test' })
 });
@@ -27,7 +30,9 @@ app.get('/api/event', function (req, res) {
         var time = new Date(item.datetime).getTime();
         return time>d.getTime()
     });
-    res.send(filtered);
+
+    var lst=arraySort(filtered, 'datetime', {reverse: true});
+    res.send(lst);
 });
 app.get('/api/event/upcoming', function (req, res) {
     var lst=constant.events;
@@ -38,7 +43,8 @@ app.get('/api/event/upcoming', function (req, res) {
         var time = new Date(item.datetime).getTime();
         return time>d.getTime()
     });
-    res.send(filtered);
+   var lts= arraySort(filtered, 'datetime');
+    res.send(lts);
 });
 app.get('/api/event/upcoming/next', function (req, res) {
     var lst=constant.events;
@@ -49,8 +55,8 @@ app.get('/api/event/upcoming/next', function (req, res) {
         var time = new Date(item.datetime).getTime();
         return time>d.getTime()
     });
-    
-    res.send(filtered[0]);
+    var lts= arraySort(filtered, 'datetime');
+    res.send(lts[0]);
 });
 app.post('/mail/contact/send', function (req, res) {
     var fmail = '';
