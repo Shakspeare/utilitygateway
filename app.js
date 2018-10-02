@@ -6,7 +6,9 @@ var nodemailer = require('nodemailer');
 var util = require('util');
 
 var pkg = require('./package.json');
-var template = require('./helper/template.js')
+var template = require('./helper/template.js');
+var dotenv = require('dotenv');
+dotenv.config();
 
 var target = pkg.targets;
 
@@ -109,6 +111,6 @@ app.post('/mail/prayerrequest/send', function (req, res) {
     });
 
 });
-http.listen(8080, function () {
-    console.log('listening on *:8080');
+http.listen(process.env.PORT, function () {
+    console.log('listening on *:'+process.env.PORT);
 });
